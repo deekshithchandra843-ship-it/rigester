@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ನ್ಯೂಸ್ Junction — Correspondent Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&family=Noto+Sans+Kannada:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="registration.css"/>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+
+    <!-- Exact Logo Replica -->
+    <div>
+      <div class="nj-logo">
+        <!-- Left tall split box -->
+        <div class="nj-box">
+          <div class="nj-box-red"></div>
+          <div class="nj-box-blue"></div>
+        </div>
+        <!-- Right plate: NEWS / JUNCTION / URL -->
+        <div class="nj-plate">
+          <div class="nj-plate-red">
+            <div class="nj-news-text">NEWS</div>
+          </div>
+          <div class="nj-plate-blue">
+            <div class="nj-junction-text">JUNCTION</div>
+          </div>
+          <div class="nj-plate-url">
+            <div class="nj-url-text">www.newsjunction.net</div>
+          </div>
+        </div>
+      </div>
+      <!-- Tagline banner below -->
+      <div class="nj-tagline-wrap">
+        <div class="nj-tagline">
+          <span class="nj-tagline-text">ನ್ಯಾಯಕ್ಕಾಗಿ ನಾವು</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portal label -->
+    <div class="header-portal">
+      <div class="header-portal-title">Correspondent Registration Portal</div>
+      <div class="header-portal-sub">ವರದಿಗಾರ ನೋಂದಣಿ ಪೋರ್ಟಲ್ · Correspondent Registration</div>
+      <span class="header-portal-tag">Karnataka · ಕರ್ನಾಟಕ · 2026</span>
+    </div>
+
+  </div>
+</header>
+<div class="gold-stripe"></div>
+<div class="progress-track"><div class="progress-fill" id="progressFill" style="width:25%"></div></div>
+
+<div class="page-body">
+  <div id="formWrap">
+
+    <!-- STEP RAIL -->
+    <div class="step-rail" id="stepRail">
+      <div class="step-item active" id="si1">
+        <div class="step-num">1</div>
+        <div class="step-label"><strong>Personal Info <span class="kn">ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ</span></strong>Basic details</div>
+      </div>
+      <div class="step-item" id="si2">
+        <div class="step-num">2</div>
+        <div class="step-label"><strong>Location <span class="kn">ಸ್ಥಳ ವಿವರ</span></strong>District & GP</div>
+      </div>
+      <div class="step-item" id="si3">
+        <div class="step-num">3</div>
+        <div class="step-label"><strong>Experience <span class="kn">ಅನುಭವ</span></strong>Skills & Beat</div>
+      </div>
+      <div class="step-item" id="si4">
+        <div class="step-num">4</div>
+        <div class="step-label"><strong>Documents <span class="kn">ದಾಖಲೆಗಳು</span></strong>Upload & Submit</div>
+      </div>
+    </div>
+
+    <!-- =================== STEP 1 =================== -->
+    <div class="step active" id="step1">
+      <div class="section-head">
+        <div class="section-eyebrow">Step 1 of 4 <span class="kn">· ಹಂತ ೧ ರಲ್ಲಿ ೪</span></div>
+        <div class="section-title">Personal Information <br><small style="font-family:'Noto Sans Kannada',sans-serif;font-size:16px;font-weight:600;color:#555;">ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ</small></div>
+        <div class="section-sub">Tell us about yourself — all fields marked <span style="color:var(--crimson)">*</span> are required &nbsp;·&nbsp; <span class="kn">ನಿಮ್ಮ ಬಗ್ಗೆ ಹೇಳಿ — <span style="color:var(--crimson)">*</span> ಗುರುತಿಸಿದ ಎಲ್ಲಾ ಕ್ಷೇತ್ರಗಳನ್ನು ಭರ್ತಿ ಮಾಡುವುದು ಕಡ್ಡಾಯ</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          </div>
+          <div><div class="card-label">Passport Photo <span class="kn">ಪಾಸ್‌ಪೋರ್ಟ್ ಭಾವಚಿತ್ರ</span></div><div class="card-sublabel">Upload a recent clear photograph <span class="kn">· ಇತ್ತೀಚಿನ ಸ್ಪಷ್ಟ ಭಾವಚಿತ್ರ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ</span></div></div>
+        </div>
+        <div class="photo-section">
+          <div class="photo-circle" id="photoCircle"><img id="photoPreview" alt=""/></div>
+          <div class="upload-zone" id="photoZone" onclick="document.getElementById('photoInput').click()">
+            <input type="file" id="photoInput" accept="image/*" onchange="handlePhoto(this)"/>
+            <div class="uz-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+            <div class="uz-title">Click to upload photo <span class="kn" style="display:inline;font-size:11px;">· ಭಾವಚಿತ್ರ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ</span></div>
+            <div class="uz-sub">JPG or PNG · Max 2 MB &nbsp;·&nbsp; <span style="font-family:'Noto Sans Kannada',sans-serif;">ಗರಿಷ್ಠ ೨ MB</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0"/></svg>
+          </div>
+          <div><div class="card-label">Identity Details <span class="kn">ಗುರುತಿನ ವಿವರಗಳು</span></div><div class="card-sublabel">Name, contact, and basic information <span class="kn">· ಹೆಸರು, ಸಂಪರ್ಕ ಮತ್ತು ಮೂಲ ಮಾಹಿತಿ</span></div></div>
+        </div>
+
+        <div class="grid2">
+          <div class="field" id="f-fname">
+            <label>First Name <span class="req">*</span><span class="kn">ಮೊದಲ ಹೆಸರು</span></label>
+            <input type="text" id="fname" placeholder="Enter first name · ಮೊದಲ ಹೆಸರು ನಮೂದಿಸಿ"/>
+            <div class="err-msg">First name is required · ಮೊದಲ ಹೆಸರು ಅಗತ್ಯವಿದೆ</div>
+          </div>
+          <div class="field" id="f-lname">
+            <label>Last Name <span class="req">*</span><span class="kn">ಕೊನೆಯ ಹೆಸರು</span></label>
+            <input type="text" id="lname" placeholder="Enter last name · ಕೊನೆಯ ಹೆಸರು ನಮೂದಿಸಿ"/>
+            <div class="err-msg">Last name is required · ಕೊನೆಯ ಹೆಸರು ಅಗತ್ಯವಿದೆ</div>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="field" id="f-mobile">
+            <label>Mobile Number <span class="req">*</span><span class="kn">ಮೊಬೈಲ್ ಸಂಖ್ಯೆ</span></label>
+            <input type="tel" id="mobile" placeholder="10-digit mobile · ೧೦ ಅಂಕಿ ಸಂಖ್ಯೆ" maxlength="10"/>
+            <div class="err-msg">Enter a valid 10-digit number · ಮಾನ್ಯ ೧೦ ಅಂಕಿ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ</div>
+          </div>
+          <div class="field" id="f-email">
+            <label>Email Address <span class="req">*</span><span class="kn">ಇಮೇಲ್ ವಿಳಾಸ</span></label>
+            <input type="email" id="email" placeholder="your@email.com"/>
+            <div class="err-msg">Enter a valid email address · ಮಾನ್ಯ ಇಮೇಲ್ ವಿಳಾಸ ನಮೂದಿಸಿ</div>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="field" id="f-dob">
+            <label>Date of Birth <span class="req">*</span><span class="kn">ಜನ್ಮ ದಿನಾಂಕ</span></label>
+            <input type="date" id="dob" max="2006-12-31"/>
+            <div class="err-msg">Date of birth is required · ಜನ್ಮ ದಿನಾಂಕ ಅಗತ್ಯವಿದೆ</div>
+          </div>
+          <div class="field" id="f-gender">
+            <label>Gender <span class="req">*</span><span class="kn">ಲಿಂಗ</span></label>
+            <select id="gender">
+              <option value="">Select gender · ಲಿಂಗ ಆಯ್ಕೆ ಮಾಡಿ</option>
+              <option value="Male">Male · ಪುರುಷ</option>
+              <option value="Female">Female · ಮಹಿಳೆ</option>
+              <option value="Other">Other · ಇತರೆ</option>
+              <option value="Prefer not to say">Prefer not to say · ಹೇಳಲು ಬಯಸುವುದಿಲ್ಲ</option>
+            </select>
+            <div class="err-msg">Please select gender · ದಯವಿಟ್ಟು ಲಿಂಗ ಆಯ್ಕೆ ಮಾಡಿ</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Address <span class="opt-tag">Optional · ಐಚ್ಛಿಕ</span><span class="kn">ವಿಳಾಸ</span></label>
+          <textarea id="address" placeholder="House no., street, village / town… · ಮನೆ ಸಂಖ್ಯೆ, ಬೀದಿ, ಗ್ರಾಮ / ಪಟ್ಟಣ…"></textarea>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-next" onclick="goNext(1)">Continue · ಮುಂದುವರಿಸಿ <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+
+    <!-- =================== STEP 2 =================== -->
+    <div class="step" id="step2">
+      <div class="section-head">
+        <div class="section-eyebrow">Step 2 of 4 <span class="kn">· ಹಂತ ೨ ರಲ್ಲಿ ೪</span></div>
+        <div class="section-title">Location Details <br><small style="font-family:'Noto Sans Kannada',sans-serif;font-size:16px;font-weight:600;color:#555;">ಸ್ಥಳ ವಿವರಗಳು</small></div>
+        <div class="section-sub">Select your district, taluk, and gram panchayat &nbsp;·&nbsp; <span class="kn">ನಿಮ್ಮ ಜಿಲ್ಲೆ, ತಾಲೂಕು ಮತ್ತು ಗ್ರಾಮ ಪಂಚಾಯತ್ ಆಯ್ಕೆ ಮಾಡಿ</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div><div class="card-label">Karnataka Location <span class="kn">ಕರ್ನಾಟಕ ಸ್ಥಳ</span></div><div class="card-sublabel">Choose your reporting area <span class="kn">· ನಿಮ್ಮ ವರದಿ ಪ್ರದೇಶ ಆಯ್ಕೆ ಮಾಡಿ</span></div></div>
+        </div>
+
+        <div class="field" id="f-district">
+          <label>District <span class="req">*</span><span class="kn">ಜಿಲ್ಲೆ</span></label>
+          <select id="district" onchange="loadTaluks()">
+            <option value="">— Select district · ಜಿಲ್ಲೆ ಆಯ್ಕೆ ಮಾಡಿ —</option>
+          </select>
+          <div class="err-msg">Please select a district · ದಯವಿಟ್ಟು ಜಿಲ್ಲೆ ಆಯ್ಕೆ ಮಾಡಿ</div>
+        </div>
+        <div class="grid2">
+          <div class="field" id="f-taluk">
+            <label>Taluk <span class="req">*</span><span class="kn">ತಾಲೂಕು</span></label>
+            <select id="taluk" disabled onchange="loadGPs()">
+              <option value="">Select district first · ಮೊದಲು ಜಿಲ್ಲೆ ಆಯ್ಕೆ ಮಾಡಿ</option>
+            </select>
+            <div class="err-msg">Please select a taluk · ದಯವಿಟ್ಟು ತಾಲೂಕು ಆಯ್ಕೆ ಮಾಡಿ</div>
+          </div>
+          <div class="field" id="f-gp">
+            <label>Gram Panchayat <span class="req">*</span><span class="kn">ಗ್ರಾಮ ಪಂಚಾಯತ್</span></label>
+            <select id="gp" disabled>
+              <option value="">Select taluk first · ಮೊದಲು ತಾಲೂಕು ಆಯ್ಕೆ ಮಾಡಿ</option>
+            </select>
+            <div class="err-msg">Please select a gram panchayat · ದಯವಿಟ್ಟು ಗ್ರಾಮ ಪಂಚಾಯತ್ ಆಯ್ಕೆ ಮಾಡಿ</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Pincode <span class="opt-tag">Optional · ಐಚ್ಛಿಕ</span><span class="kn">ಪಿನ್ ಕೋಡ್</span></label>
+          <input type="text" id="pincode" placeholder="6-digit pincode · ೬ ಅಂಕಿ ಪಿನ್ ಕೋಡ್" maxlength="6"/>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-back" onclick="goBack(2)"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg> Back · ಹಿಂದೆ</button>
+        <button class="btn btn-next" onclick="goNext(2)">Continue · ಮುಂದುವರಿಸಿ <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+
+    <!-- =================== STEP 3 =================== -->
+    <div class="step" id="step3">
+      <div class="section-head">
+        <div class="section-eyebrow">Step 3 of 4 <span class="kn">· ಹಂತ ೩ ರಲ್ಲಿ ೪</span></div>
+        <div class="section-title">Experience & Skills <br><small style="font-family:'Noto Sans Kannada',sans-serif;font-size:16px;font-weight:600;color:#555;">ಅನುಭವ ಮತ್ತು ಕೌಶಲ್ಯಗಳು</small></div>
+        <div class="section-sub">Your journalism background and areas of expertise &nbsp;·&nbsp; <span class="kn">ನಿಮ್ಮ ಪತ್ರಿಕೋದ್ಯಮ ಹಿನ್ನೆಲೆ ಮತ್ತು ಪರಿಣತಿ ಕ್ಷೇತ್ರಗಳು</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div><div class="card-label">Professional Background <span class="kn">ವೃತ್ತಿಪರ ಹಿನ್ನೆಲೆ</span></div><div class="card-sublabel">Occupation, experience, and education <span class="kn">· ಉದ್ಯೋಗ, ಅನುಭವ ಮತ್ತು ಶಿಕ್ಷಣ</span></div></div>
+        </div>
+
+        <div class="grid2">
+          <div class="field" id="f-occupation">
+            <label>Current Occupation <span class="req">*</span><span class="kn">ಪ್ರಸ್ತುತ ಉದ್ಯೋಗ</span></label>
+            <select id="occupation">
+              <option value="">Select occupation · ಉದ್ಯೋಗ ಆಯ್ಕೆ ಮಾಡಿ</option>
+              <option value="Working journalist">Working journalist · ಕಾರ್ಯನಿರತ ಪತ್ರಕರ್ತ</option>
+              <option value="Freelance reporter">Freelance reporter · ಸ್ವತಂತ್ರ ವರದಿಗಾರ</option>
+              <option value="Student (journalism)">Student (journalism) · ವಿದ್ಯಾರ್ಥಿ (ಪತ್ರಿಕೋದ್ಯಮ)</option>
+              <option value="Farmer">Farmer · ರೈತ</option>
+              <option value="Government employee">Government employee · ಸರ್ಕಾರಿ ನೌಕರ</option>
+              <option value="Business">Business · ವ್ಯಾಪಾರ</option>
+              <option value="Other">Other · ಇತರೆ</option>
+            </select>
+            <div class="err-msg">Please select an occupation · ದಯವಿಟ್ಟು ಉದ್ಯೋಗ ಆಯ್ಕೆ ಮಾಡಿ</div>
+          </div>
+          <div class="field" id="f-experience">
+            <label>Media Experience <span class="req">*</span><span class="kn">ಮಾಧ್ಯಮ ಅನುಭವ</span></label>
+            <select id="experience">
+              <option value="">Select experience · ಅನುಭವ ಆಯ್ಕೆ ಮಾಡಿ</option>
+              <option value="Fresher (no experience)">Fresher · ಹೊಸಬರು (ಅನುಭವ ಇಲ್ಲ)</option>
+              <option value="Less than 1 year">Less than 1 year · ೧ ವರ್ಷಕ್ಕಿಂತ ಕಡಿಮೆ</option>
+              <option value="1–3 years">1–3 years · ೧–೩ ವರ್ಷ</option>
+              <option value="3–5 years">3–5 years · ೩–೫ ವರ್ಷ</option>
+              <option value="5–10 years">5–10 years · ೫–೧೦ ವರ್ಷ</option>
+              <option value="10+ years">10+ years · ೧೦+ ವರ್ಷ</option>
+            </select>
+            <div class="err-msg">Please select experience level · ದಯವಿಟ್ಟು ಅನುಭವ ಮಟ್ಟ ಆಯ್ಕೆ ಮಾಡಿ</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Education Qualification <span class="opt-tag">Optional · ಐಚ್ಛಿಕ</span><span class="kn">ಶೈಕ್ಷಣಿಕ ಅರ್ಹತೆ</span></label>
+          <select id="education">
+            <option value="">Select qualification · ಅರ್ಹತೆ ಆಯ್ಕೆ ಮಾಡಿ</option>
+            <option value="10th / SSLC">10th / SSLC · ೧೦ನೇ ತರಗತಿ</option>
+            <option value="12th / PUC">12th / PUC · ೧೨ನೇ ತರಗತಿ / ಪಿಯುಸಿ</option>
+            <option value="Diploma">Diploma · ಡಿಪ್ಲೊಮಾ</option>
+            <option value="Bachelor's Degree">Bachelor's Degree · ಪದವಿ</option>
+            <option value="Bachelor's in Journalism (BJC)">Bachelor's in Journalism (BJC) · ಪತ್ರಿಕೋದ್ಯಮ ಪದವಿ</option>
+            <option value="Master's Degree">Master's Degree · ಸ್ನಾತಕೋತ್ತರ ಪದವಿ</option>
+            <option value="Master's in Journalism (MJC)">Master's in Journalism (MJC) · ಪತ್ರಿಕೋದ್ಯಮ ಸ್ನಾತಕೋತ್ತರ</option>
+            <option value="Other">Other · ಇತರೆ</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+          </div>
+          <div><div class="card-label">Languages & Beat <span class="kn">ಭಾಷೆಗಳು ಮತ್ತು ವರದಿ ಕ್ಷೇತ್ರ</span></div><div class="card-sublabel">Reporting languages and news interests <span class="kn">· ವರದಿ ಭಾಷೆಗಳು ಮತ್ತು ಸುದ್ದಿ ಆಸಕ್ತಿಗಳು</span></div></div>
+        </div>
+
+        <div class="field" id="f-languages">
+          <label>Languages You Can Report In <span class="req">*</span><span class="kn">ನೀವು ವರದಿ ಮಾಡಬಲ್ಲ ಭಾಷೆಗಳು</span></label>
+          <div class="check-grid3" id="langGrid">
+            <div class="check-item"><input type="checkbox" id="l1" value="Kannada"/><label for="l1">ಕನ್ನಡ · Kannada</label></div>
+            <div class="check-item"><input type="checkbox" id="l2" value="English"/><label for="l2">English · ಇಂಗ್ಲಿಷ್</label></div>
+            <div class="check-item"><input type="checkbox" id="l3" value="Hindi"/><label for="l3">हिन्दी · Hindi</label></div>
+            <div class="check-item"><input type="checkbox" id="l4" value="Urdu"/><label for="l4">اردو · Urdu</label></div>
+            <div class="check-item"><input type="checkbox" id="l5" value="Tamil"/><label for="l5">தமிழ் · Tamil</label></div>
+            <div class="check-item"><input type="checkbox" id="l6" value="Telugu"/><label for="l6">తెలుగు · Telugu</label></div>
+          </div>
+          <div class="err-msg" id="lang-error">Select at least one language · ಕನಿಷ್ಠ ಒಂದು ಭಾಷೆ ಆಯ್ಕೆ ಮಾಡಿ</div>
+        </div>
+
+        <hr class="accent-rule"/>
+
+        <div class="field" id="f-interests">
+          <label>News Beat / Areas of Interest <span class="req">*</span><span class="kn">ಸುದ್ದಿ ವಿಭಾಗ / ಆಸಕ್ತಿ ಕ್ಷೇತ್ರಗಳು</span></label>
+          <div class="check-grid2" id="interestGrid">
+            <div class="check-item"><input type="checkbox" id="i1" value="Politics"/><label for="i1">🗳 Politics · ರಾಜಕೀಯ</label></div>
+            <div class="check-item"><input type="checkbox" id="i2" value="Crime"/><label for="i2">🚔 Crime · ಅಪರಾಧ</label></div>
+            <div class="check-item"><input type="checkbox" id="i3" value="Agriculture"/><label for="i3">🌾 Agriculture · ಕೃಷಿ</label></div>
+            <div class="check-item"><input type="checkbox" id="i4" value="Sports"/><label for="i4">⚽ Sports · ಕ್ರೀಡೆ</label></div>
+            <div class="check-item"><input type="checkbox" id="i5" value="Entertainment"/><label for="i5">🎬 Entertainment · ಮನರಂಜನೆ</label></div>
+            <div class="check-item"><input type="checkbox" id="i6" value="Business"/><label for="i6">📈 Business · ವ್ಯಾಪಾರ</label></div>
+            <div class="check-item"><input type="checkbox" id="i7" value="Education"/><label for="i7">📚 Education · ಶಿಕ್ಷಣ</label></div>
+            <div class="check-item"><input type="checkbox" id="i8" value="Health"/><label for="i8">🏥 Health · ಆರೋಗ್ಯ</label></div>
+            <div class="check-item"><input type="checkbox" id="i9" value="Environment"/><label for="i9">🌿 Environment · ಪರಿಸರ</label></div>
+            <div class="check-item"><input type="checkbox" id="i10" value="Technology"/><label for="i10">💻 Technology · ತಂತ್ರಜ್ಞಾನ</label></div>
+          </div>
+          <div class="err-msg" id="interest-error">Select at least one area of interest · ಕನಿಷ್ಠ ಒಂದು ಆಸಕ್ತಿ ಕ್ಷೇತ್ರ ಆಯ್ಕೆ ಮಾಡಿ</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <div><div class="card-label">About You <span class="kn">ನಿಮ್ಮ ಬಗ್ಗೆ</span></div><div class="card-sublabel">Previous work and self-introduction <span class="kn">· ಹಿಂದಿನ ಕೆಲಸ ಮತ್ತು ಸ್ವ-ಪರಿಚಯ</span></div></div>
+        </div>
+        <div class="field">
+          <label>Previous Media Organizations <span class="opt-tag">Optional · ಐಚ್ಛಿಕ</span><span class="kn">ಹಿಂದಿನ ಮಾಧ್ಯಮ ಸಂಸ್ಥೆಗಳು</span></label>
+          <textarea id="prevOrg" placeholder="Name of newspapers, channels, or digital media you've worked with… · ನೀವು ಕೆಲಸ ಮಾಡಿದ ಪತ್ರಿಕೆ, ಚಾನೆಲ್ ಅಥವಾ ಡಿಜಿಟಲ್ ಮಾಧ್ಯಮದ ಹೆಸರು…"></textarea>
+        </div>
+        <div class="field">
+          <label>About Yourself <span class="opt-tag">Optional · ಐಚ್ಛಿಕ</span><span class="kn">ನಿಮ್ಮ ಬಗ್ಗೆ</span></label>
+          <textarea id="about" placeholder="Brief introduction and why you want to be a News Junction correspondent… · ಸಂಕ್ಷಿಪ್ತ ಪರಿಚಯ ಮತ್ತು ನ್ಯೂಸ್ Junction ವರದಿಗಾರರಾಗಲು ಬಯಸಿದ ಕಾರಣ…"></textarea>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-back" onclick="goBack(3)"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg> Back · ಹಿಂದೆ</button>
+        <button class="btn btn-next" onclick="goNext(3)">Continue · ಮುಂದುವರಿಸಿ <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+
+    <!-- =================== STEP 4 =================== -->
+    <div class="step" id="step4">
+      <div class="section-head">
+        <div class="section-eyebrow">Step 4 of 4 <span class="kn">· ಹಂತ ೪ ರಲ್ಲಿ ೪</span></div>
+        <div class="section-title">Documents & Declaration <br><small style="font-family:'Noto Sans Kannada',sans-serif;font-size:16px;font-weight:600;color:#555;">ದಾಖಲೆಗಳು ಮತ್ತು ಘೋಷಣೆ</small></div>
+        <div class="section-sub">Upload required documents and confirm your declaration &nbsp;·&nbsp; <span class="kn">ಅಗತ್ಯ ದಾಖಲೆಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ ಮತ್ತು ಘೋಷಣೆಯನ್ನು ದೃಢಪಡಿಸಿ</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <div><div class="card-label">Document Upload <span class="kn">ದಾಖಲೆ ಅಪ್‌ಲೋಡ್</span></div><div class="card-sublabel">Resume and identity proof <span class="kn">· ರೆಸ್ಯೂಮ್ ಮತ್ತು ಗುರುತಿನ ದಾಖಲೆ</span></div></div>
+        </div>
+
+        <div class="field">
+          <label>Resume / CV <span class="req">*</span> <span class="opt-tag">PDF only · max 5 MB</span><span class="kn">ರೆಸ್ಯೂಮ್ / ಜೀವನ ವೃತ್ತಾಂತ</span></label>
+          <div class="upload-zone" id="resumeZone" onclick="document.getElementById('resumeInput').click()">
+            <input type="file" id="resumeInput" accept=".pdf" onchange="handleFile(this,'resumeZone','resumePreview','resume')"/>
+            <div class="uz-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+            <div class="uz-title">Click to upload resume <span style="font-family:'Noto Sans Kannada',sans-serif;font-size:12px;">· ರೆಸ್ಯೂಮ್ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ</span></div>
+            <div class="uz-sub">PDF format only · Max 5 MB &nbsp;·&nbsp; <span style="font-family:'Noto Sans Kannada',sans-serif;">ಗರಿಷ್ಠ ೫ MB</span></div>
+          </div>
+          <div id="resumePreview"></div>
+          <div class="err-msg" id="resume-error">Resume is required · ರೆಸ್ಯೂಮ್ ಅಗತ್ಯವಿದೆ</div>
+        </div>
+
+        <div class="field">
+          <label>Aadhaar Card <span class="req">*</span> <span class="opt-tag">PDF or image · max 3 MB</span><span class="kn">ಆಧಾರ್ ಕಾರ್ಡ್</span></label>
+          <div class="upload-zone" id="aadhaarZone" onclick="document.getElementById('aadhaarInput').click()">
+            <input type="file" id="aadhaarInput" accept=".pdf,image/*" onchange="handleFile(this,'aadhaarZone','aadhaarPreview','aadhaar')"/>
+            <div class="uz-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"/></svg></div>
+            <div class="uz-title">Click to upload Aadhaar card <span style="font-family:'Noto Sans Kannada',sans-serif;font-size:12px;">· ಆಧಾರ್ ಕಾರ್ಡ್ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ</span></div>
+            <div class="uz-sub">PDF or JPG/PNG · Max 3 MB &nbsp;·&nbsp; <span style="font-family:'Noto Sans Kannada',sans-serif;">ಗರಿಷ್ಠ ೩ MB</span></div>
+          </div>
+          <div id="aadhaarPreview"></div>
+          <div class="err-msg" id="aadhaar-error">Aadhaar card is required · ಆಧಾರ್ ಕಾರ್ಡ್ ಅಗತ್ಯವಿದೆ</div>
+        </div>
+
+        <div class="field">
+          <label>Additional Document <span class="opt-tag">Optional · ಐಚ್ಛಿಕ — press card, experience letter…</span><span class="kn">ಹೆಚ್ಚುವರಿ ದಾಖಲೆ</span></label>
+          <div class="upload-zone" id="otherZone" onclick="document.getElementById('otherInput').click()">
+            <input type="file" id="otherInput" accept=".pdf,image/*" onchange="handleFile(this,'otherZone','otherPreview','other')"/>
+            <div class="uz-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/></svg></div>
+            <div class="uz-title">Click to upload additional document <span style="font-family:'Noto Sans Kannada',sans-serif;font-size:12px;">· ಹೆಚ್ಚುವರಿ ದಾಖಲೆ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ</span></div>
+            <div class="uz-sub">Max 5 MB &nbsp;·&nbsp; <span style="font-family:'Noto Sans Kannada',sans-serif;">ಗರಿಷ್ಠ ೫ MB</span></div>
+          </div>
+          <div id="otherPreview"></div>
+        </div>
+      </div>
+
+      <div class="declaration">
+        <div class="declaration-title">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Declaration · ಘೋಷಣೆ
+        </div>
+        <p>I hereby declare that all information provided in this registration form is true, correct, and complete to the best of my knowledge and belief. I understand that any false or misleading information may result in rejection of my application or termination of my correspondent status.</p>
+        <p style="font-family:'Noto Sans Kannada',sans-serif;font-size:12.5px;color:#666;margin-top:-6px;">ಈ ನೋಂದಣಿ ಅರ್ಜಿಯಲ್ಲಿ ನೀಡಿದ ಎಲ್ಲಾ ಮಾಹಿತಿಯು ನನ್ನ ಅರಿವಿನ ಮಿತಿಯಲ್ಲಿ ಸತ್ಯ, ಸರಿಯಾದ ಮತ್ತು ಸಂಪೂರ್ಣವಾಗಿದೆ ಎಂದು ಇದರಿಂದ ಘೋಷಿಸುತ್ತೇನೆ.</p>
+        <div class="decl-check">
+          <input type="checkbox" id="declaration"/>
+          <label for="declaration">I agree to the declaration above and confirm that I have read and accept the <strong>News Junction Correspondent Terms & Conditions</strong>.
+          <br><span style="font-family:'Noto Sans Kannada',sans-serif;font-size:12px;color:#666;">ನಾನು ಮೇಲಿನ ಘೋಷಣೆಗೆ ಸಮ್ಮತಿಸುತ್ತೇನೆ ಮತ್ತು <strong>ನ್ಯೂಸ್ Junction ವರದಿಗಾರ ನಿಯಮ ಮತ್ತು ಷರತ್ತುಗಳನ್ನು</strong> ಓದಿ ಒಪ್ಪಿಕೊಳ್ಳುತ್ತೇನೆ ಎಂದು ದೃಢಪಡಿಸುತ್ತೇನೆ.</span></label>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-back" onclick="goBack(4)"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg> Back · ಹಿಂದೆ</button>
+        <button class="btn btn-submit" id="submitBtn" onclick="submitForm()">Submit Registration · ನೋಂದಣಿ ಸಲ್ಲಿಸಿ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-emblem">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    </div>
+    <div class="success-title">Registration Submitted! <br><span style="font-family:'Noto Sans Kannada',sans-serif;font-size:20px;font-weight:600;">ನೋಂದಣಿ ಸಲ್ಲಿಸಲಾಗಿದೆ!</span></div>
+    <div class="success-sub">
+      Thank you for applying to be a <b>News Junction</b> correspondent. Our team will review your application and contact you within <b>3–5 working days</b>.
+      <br><br>
+      <span style="font-family:'Noto Sans Kannada',sans-serif;font-size:13px;color:#777;"><b>ನ್ಯೂಸ್ Junction</b> ವರದಿಗಾರರಾಗಲು ಅರ್ಜಿ ಸಲ್ಲಿಸಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು. ನಮ್ಮ ತಂಡವು ನಿಮ್ಮ ಅರ್ಜಿಯನ್ನು ಪರಿಶೀಲಿಸಿ <b>೩–೫ ಕಾರ್ಯ ದಿನಗಳಲ್ಲಿ</b> ಸಂಪರ್ಕಿಸುತ್ತದೆ.</span>
+    </div>
+    <div class="reg-id-card">
+      <div class="reg-id-label">Your Registration ID · ನಿಮ್ಮ ನೋಂದಣಿ ಸಂಖ್ಯೆ</div>
+      <div class="reg-id-value" id="regId">NJ-2026-XXXX</div>
+    </div>
+  </div>
+</div>
+
+<script src="registration.js"></script>
+</body>
+</html>
