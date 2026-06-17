@@ -66,6 +66,17 @@ body {
   font-size: 14px;
 }
 .btn-reset:hover { background: #f3f4f6; }
+.btn-export {
+  padding: 9px 16px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+.btn-export:hover { background: #1d4ed8; }
 
 /* ===== KPI cards ===== */
 .kpis {

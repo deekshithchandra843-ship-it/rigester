@@ -240,6 +240,11 @@ async function initFilters() {
     applyFilters();
   });
 
+  // Download CSV of the currently-filtered registrations.
+  document.getElementById('btn-export').addEventListener('click', () => {
+    window.location.href = API_BASE + '/api/export.csv?' + toQuery();
+  });
+
   document.getElementById('btn-prev').addEventListener('click', () => {
     if (currentPage > 1) { currentPage--; loadTable(); }
   });

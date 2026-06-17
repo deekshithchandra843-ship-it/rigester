@@ -192,4 +192,74 @@ router.get('/filters', async (req, res) => {
   }
 });
 
+/**
+ * GET /api/export.csv
+ * Downloads ALL registrations matching the current filters as a CSV file.
+ * Opens directly in Google Sheets or Excel. No extra dependencies.
+ */
+router.get('/export.csv', async (req, res) => {
+  try {
+    const match = buildMatch(req.query);
+
+    const rows = await Registration.find(match)
+      .sort({ created_at: -1 })
+      .lean();
+
+    // Columns to export (label -> value getter)
+    const columns = [
+      ['Registration ID', (r) => r.registration_id],
+      ['First Name', (r) => r.first_name],
+      ['Last Name', (r) => r.last_name],
+      ['Mobile', (r) => r.mobile],
+      ['Email', (r) => r.email],
+      ['Date of Birth', (r) => fmtDate(r.dob)],
+      ['Gender', (r) => r.gender],
+      ['Address', (r) => r.address],
+      ['District', (r) => r.district],
+      ['Taluk', (r) => r.taluk],
+      ['Gram Panchayat', (r) => r.gram_panchayat],
+      ['Pincode', (r) => r.pincode],
+      ['Occupation', (r) => r.occupation],
+      ['Experience', (r) => r.experience],
+      ['Education', (r) => r.education],
+      ['Languages', (r) => (r.languages || []).join('; ')],
+      ['Interests', (r) => (r.interests || []).join('; ')],
+      ['Previous Organizations', (r) => r.prev_organizations],
+      ['About', (r) => r.about],
+      ['Status', (r) => r.status],
+      ['Registered On', (r) => fmtDate(r.created_at)],
+    ];
+
+    const header = columns.map((c) => csvCell(c[0])).join(',');
+    const lines = rows.map((r) => columns.map((c) => csvCell(c[1](r))).join(','));
+    // Prepend BOM so Excel/Sheets read UTF-8 (and Kannada/Indic text) correctly.
+    const csv = '﻿' + [header, ...lines].join('\r\n');
+
+    const stamp = new Date().toISOString().slice(0, 10);
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', `attachment; filename="registrations-${stamp}.csv"`);
+    res.send(csv);
+  } catch (err) {
+    console.error('EXPORT ERROR:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Escape a single CSV cell per RFC 4180.
+function csvCell(value) {
+  if (value == null) return '';
+  const s = String(value);
+  if (/[",\r\n]/.test(s)) {
+    return '"' + s.replace(/"/g, '""') + '"';
+  }
+  return s;
+}
+
+// Format a date as YYYY-MM-DD (blank if missing/invalid).
+function fmtDate(d) {
+  if (!d) return '';
+  const date = new Date(d);
+  return isNaN(date) ? '' : date.toISOString().slice(0, 10);
+}
+
 module.exports = router;
