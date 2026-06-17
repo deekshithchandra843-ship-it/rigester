@@ -165,7 +165,7 @@ async function loadTable() {
     const d = await fetchJSON('/api/registrations?' + toQuery({ page: currentPage, limit: PAGE_LIMIT }));
 
     if (!d.rows.length) {
-      tbody.innerHTML = '<tr><td colspan="7" class="empty">No registrations match these filters.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="8" class="empty">No registrations match these filters.</td></tr>';
     } else {
       tbody.innerHTML = d.rows.map((r) => {
         const status = (r.status || 'unknown').toLowerCase();
@@ -178,6 +178,7 @@ async function loadTable() {
           <td>${esc(r.gender)}</td>
           <td><span class="badge ${status}">${esc(r.status || 'unknown')}</span></td>
           <td>${date}</td>
+          <td class="docs">${docLinks(r.documents)}</td>
         </tr>`;
       }).join('');
     }
@@ -189,6 +190,16 @@ async function loadTable() {
     console.error(err);
     tbody.innerHTML = '<tr><td colspan="7" class="empty">Error loading table.</td></tr>';
   }
+}
+
+// Render small clickable links for whichever documents a person uploaded.
+function docLinks(docs) {
+  if (!docs) return '<span class="muted">—</span>';
+  const labels = { photo: 'Photo', resume: 'Resume', aadhaar: 'Aadhaar', other: 'Doc' };
+  const links = Object.keys(labels)
+    .filter((k) => docs[k])
+    .map((k) => `<a href="${esc(docs[k])}" target="_blank" rel="noopener">${labels[k]}</a>`);
+  return links.length ? links.join(' ') : '<span class="muted">—</span>';
 }
 
 // Basic HTML escaping for table cells.

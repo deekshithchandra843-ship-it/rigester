@@ -145,13 +145,23 @@ router.get('/registrations', async (req, res) => {
 
     const [rows, total] = await Promise.all([
       Registration.find(match)
-        .select('registration_id first_name last_name district occupation gender status created_at')
+        .select('registration_id first_name last_name district occupation gender status created_at photo_path resume_path aadhaar_path other_doc_path')
         .sort({ created_at: -1 })
         .skip(skip)
         .limit(limit)
         .lean(),
       Registration.countDocuments(match),
     ]);
+
+    // Expose document links as absolute URLs the dashboard can open directly.
+    rows.forEach((r) => {
+      r.documents = {
+        photo: absUrl(req, r.photo_path),
+        resume: absUrl(req, r.resume_path),
+        aadhaar: absUrl(req, r.aadhaar_path),
+        other: absUrl(req, r.other_doc_path),
+      };
+    });
 
     res.json({
       rows,
@@ -228,6 +238,10 @@ router.get('/export.csv', async (req, res) => {
       ['About', (r) => r.about],
       ['Status', (r) => r.status],
       ['Registered On', (r) => fmtDate(r.created_at)],
+      ['Photo', (r) => absUrl(req, r.photo_path)],
+      ['Resume', (r) => absUrl(req, r.resume_path)],
+      ['Aadhaar', (r) => absUrl(req, r.aadhaar_path)],
+      ['Other Document', (r) => absUrl(req, r.other_doc_path)],
     ];
 
     const header = columns.map((c) => csvCell(c[0])).join(',');
@@ -244,6 +258,15 @@ router.get('/export.csv', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+// Turn a stored file reference into an absolute, clickable URL.
+// Cloudinary values are already absolute (http...); local /uploads paths
+// get prefixed with the current host.
+function absUrl(req, p) {
+  if (!p) return null;
+  if (/^https?:\/\//i.test(p)) return p;
+  return `${req.protocol}://${req.get('host')}${p}`;
+}
 
 // Escape a single CSV cell per RFC 4180.
 function csvCell(value) {
