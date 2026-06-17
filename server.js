@@ -3,7 +3,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 const cors = require('cors');
+const cloudinary = require('cloudinary').v2;
 const Registration = require('./models/Registration');
 const dashboardRoutes = require('./routes/dashboard');
 
@@ -30,16 +32,46 @@ mongoose.connect(mongoURI)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.error('MongoDB Connection Error:', err));
 
-// Configure Local Disk Storage for Multer
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  }
+// --- File storage: Cloudinary (permanent) when configured, else local disk ---
+// Configure Cloudinary from environment variables.
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
-const upload = multer({ storage });
+const cloudinaryEnabled = !!(
+  process.env.CLOUDINARY_CLOUD_NAME &&
+  process.env.CLOUDINARY_API_KEY &&
+  process.env.CLOUDINARY_API_SECRET
+);
+console.log(`File storage: ${cloudinaryEnabled ? 'Cloudinary (permanent)' : 'local disk (ephemeral)'}`);
+
+// Keep uploads in memory so we can forward them to Cloudinary (or write to disk).
+const upload = multer({ storage: multer.memoryStorage() });
+
+/**
+ * Persist one uploaded file and return a URL/path to store in the DB.
+ * Uploads to Cloudinary when configured; otherwise writes to the local
+ * uploads/ folder (note: local disk is wiped on Render restarts).
+ */
+function storeFile(file) {
+  if (!file) return Promise.resolve(null);
+
+  if (cloudinaryEnabled) {
+    return new Promise((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        { folder: 'registrations', resource_type: 'auto' },
+        (err, result) => (err ? reject(err) : resolve(result.secure_url))
+      );
+      stream.end(file.buffer);
+    });
+  }
+
+  // Fallback: write to local disk
+  const filename = `${Date.now()}-${file.originalname}`;
+  fs.writeFileSync(path.join(__dirname, 'uploads', filename), file.buffer);
+  return Promise.resolve(`/uploads/${filename}`);
+}
 
 // API Endpoints
 
@@ -64,14 +96,22 @@ app.post('/api/register', upload.fields([
       interests = Array.isArray(body.interests) ? body.interests : [];
     }
 
+    // Persist each uploaded file (Cloudinary or disk) and store its URL/path.
+    const [photo_path, resume_path, aadhaar_path, other_doc_path] = await Promise.all([
+      storeFile(files['photo'] && files['photo'][0]),
+      storeFile(files['resume'] && files['resume'][0]),
+      storeFile(files['aadhaar'] && files['aadhaar'][0]),
+      storeFile(files['other'] && files['other'][0]),
+    ]);
+
     const registrationData = {
       ...body,
       languages,
       interests,
-      photo_path: files['photo'] ? `/uploads/${files['photo'][0].filename}` : null,
-      resume_path: files['resume'] ? `/uploads/${files['resume'][0].filename}` : null,
-      aadhaar_path: files['aadhaar'] ? `/uploads/${files['aadhaar'][0].filename}` : null,
-      other_doc_path: files['other'] ? `/uploads/${files['other'][0].filename}` : null,
+      photo_path,
+      resume_path,
+      aadhaar_path,
+      other_doc_path,
     };
 
     const newRegistration = new Registration(registrationData);
