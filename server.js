@@ -20,7 +20,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/dashboard', express.static(path.join(__dirname, 'public/dashboard')));
 
 // Deploy probe: unambiguous marker so we can tell which build is actually live
-const BUILD_TAG = 'dashboard-v2-docs';
+const BUILD_TAG = 'gp-optional-lgd';
 app.get('/healthz', (req, res) => res.json({ ok: true, build: BUILD_TAG }));
 
 // Dashboard analytics API (aggregation pipelines): /api/dashboard, /api/registrations, /api/filters
