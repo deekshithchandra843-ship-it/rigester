@@ -5,6 +5,7 @@ const multer = require('multer');
 const path = require('path');
 const cors = require('cors');
 const Registration = require('./models/Registration');
+const dashboardRoutes = require('./routes/dashboard');
 
 const app = express();
 
@@ -13,6 +14,11 @@ app.use(express.json());
 app.use(cors());
 // Serve uploaded files statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// Serve the analytics dashboard at /dashboard
+app.use('/dashboard', express.static(path.join(__dirname, 'public/dashboard')));
+
+// Dashboard analytics API (aggregation pipelines): /api/dashboard, /api/registrations, /api/filters
+app.use('/api', dashboardRoutes);
 
 // MongoDB Connection
 const mongoURI = process.env.MONGO_URI;
