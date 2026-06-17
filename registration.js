@@ -7536,7 +7536,7 @@ function validateStep(n) {
     });
   }
   if (n === 2) {
-    ['district', 'taluk'].forEach(id => {
+    ['district'].forEach(id => {
       const el = document.getElementById(id);
       const fel = document.getElementById('f-' + id);
       if (!el.value) { fel.classList.add('has-error'); ok = false; }
