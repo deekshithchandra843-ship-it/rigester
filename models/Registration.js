@@ -11,7 +11,7 @@ const RegistrationSchema = new mongoose.Schema({
   address: String,
   district: { type: String, required: true },
   taluk: { type: String, required: true },
-  gram_panchayat: { type: String, required: true },
+  gram_panchayat: { type: String },
   pincode: String,
   occupation: { type: String, required: true },
   experience: { type: String, required: true },
