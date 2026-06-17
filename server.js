@@ -17,6 +17,10 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Serve the analytics dashboard at /dashboard
 app.use('/dashboard', express.static(path.join(__dirname, 'public/dashboard')));
 
+// Deploy probe: unambiguous marker so we can tell which build is actually live
+const BUILD_TAG = 'dashboard-v1';
+app.get('/healthz', (req, res) => res.json({ ok: true, build: BUILD_TAG }));
+
 // Dashboard analytics API (aggregation pipelines): /api/dashboard, /api/registrations, /api/filters
 app.use('/api', dashboardRoutes);
 
@@ -84,4 +88,4 @@ app.post('/api/register', upload.fields([
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT} [build: ${BUILD_TAG}]`));
